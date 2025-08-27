@@ -3,7 +3,6 @@ function getElement(id) {
   const element = document.getElementById(id);
   return element;
 }
-
 // Add to cart button
 const addToCartButtons = document.getElementsByClassName("add-to-cart-button");
 for (let addToCartButton of addToCartButtons) {
@@ -22,9 +21,7 @@ for (let addToCartButton of addToCartButtons) {
     totalPrice += productPrice;
     let finalTotalPrice = (getElement("total-price").innerText =
       totalPrice.toFixed(2));
-
     const cartContainer = getElement("cart-container");
-    console.log(cartContainer);
     const newCartItem = document.createElement("div");
     newCartItem.innerHTML = `
 <div
@@ -44,6 +41,11 @@ for (let addToCartButton of addToCartButtons) {
             </div>
     `;
     cartContainer.appendChild(newCartItem);
+    // Add quantity
+    let quantity = parseInt(getElement("product-quantity").innerText);
+    quantity += 1;
+    getElement("product-quantity").innerText = quantity;
   });
 }
+
 // Add cart items
